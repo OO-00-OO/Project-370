@@ -1,5 +1,0 @@
-1,Eggs,4.95,Two Eggs scrambled with butter and salt,
-2,French Toast,6.95f,bread dipped in a batter of egg and milk served with syrup or sprinkled with sugar and cinnamon,
-3,Bacon and eggs,8.95f,Classic American Breakfast with two eggs and five strips of bacon,
-4,Buttermilk Pancakes,10.95f,Five Fullfy Pancakes with buttermilk topped with syrup and butter,
-5,Belgian Waffle,12.95f,Three Waffles withmextra-deep pockets—the better for filling with butter ;jam ;maple ;syrup;or whipped cream,
