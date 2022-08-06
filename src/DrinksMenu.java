@@ -1,20 +1,17 @@
 import java.util.*;
 import java.io.*;
 
-public class BreakfastMenu
+public class DrinksMenu
 {
     Receipt receipt = new Receipt();
     Main main = new Main();
     
-
-
-    
-    public void BreakFastList()
+    public void DrinksList()
     {
         // Scans the file and stores the data in the arrays
-        Breakfast_txt_Scanner();
-        // Prompts the user to select a breakfast item
-        Breakfast_Menu_Selector();
+        Drinks_txt_Scanner();
+        // Prompts the user to select a Drinks item
+        Drinks_Menu_Selector();
     }
 
 
@@ -23,11 +20,11 @@ public class BreakfastMenu
 
 
     // The Five Variables That the .txt File Will be Read Into
-    int [] breakfast_Item_Index = new int[5];
-    String [] breakfast_Item_Name = new String[5];
-    float [] breakfast_Item_Price = new float[5];
-    String [] breakfast_Item_Description = new String[5];
-    String [] breakfast_Item_INFO_Combined= new String[5];
+    int [] Drinks_Item_Index = new int[5];
+    String [] Drinks_Item_Name = new String[5];
+    float [] Drinks_Item_Price = new float[5];
+    String [] Drinks_Item_Description = new String[5];
+    String [] Drinks_Item_INFO_Combined= new String[5];
     // Write a method to read menu from a file and store it in an array
 
 
@@ -40,13 +37,13 @@ public class BreakfastMenu
         return item;
     }
 
-    private void Breakfast_txt_Scanner()
+    private void Drinks_txt_Scanner()
     {
         String SectionReader = "";
         try
         {
-            //Scanner input = new Scanner(new File("."+System.getProperty("path.separator")+"Breakfast.txt"));
-            Scanner input = new Scanner(new File("Breakfast_Menu.txt"));
+            //Scanner input = new Scanner(new File("."+System.getProperty("path.separator")+"Drinks.txt"));
+            Scanner input = new Scanner(new File("Drinks_Menu.txt"));
             input.useDelimiter(";");
             
             for (int Line = 0; Line < 5 ; Line++)
@@ -57,27 +54,27 @@ public class BreakfastMenu
                     {
                         SectionReader = input.next();
                         //System.out.println("This is Index : "  + SectionReader);
-                        breakfast_Item_Index[Line] = Integer.parseInt(SectionReader);
+                        Drinks_Item_Index[Line] = Integer.parseInt(SectionReader);
                     }
                     else if (Section == 1)
                     {
                         SectionReader = input.next();
                         //System.out.println("This is Name: "  + SectionReader);
-                        breakfast_Item_Name[Line] = SectionReader;
+                        Drinks_Item_Name[Line] = SectionReader;
                     }
                     else if (Section == 2)
                     {
                         SectionReader = input.next();
                         //System.out.println("This is Price : "  + SectionReader);
-                        breakfast_Item_Price[Line] = Float.parseFloat(SectionReader);
+                        Drinks_Item_Price[Line] = Float.parseFloat(SectionReader);
                     }
                     else if (Section == 3)
                     {
                         SectionReader = input.next();
                         //System.out.println("This is Description : "  + SectionReader);
-                        breakfast_Item_Description[Line] = SectionReader;
+                        Drinks_Item_Description[Line] = SectionReader;
                     }
-                    breakfast_Item_INFO_Combined[Line] = Items_INFO_Combined_Format(breakfast_Item_Index[Line], breakfast_Item_Name[Line], breakfast_Item_Price[Line], breakfast_Item_Description[Line]);
+                    Drinks_Item_INFO_Combined[Line] = Items_INFO_Combined_Format(Drinks_Item_Index[Line], Drinks_Item_Name[Line], Drinks_Item_Price[Line], Drinks_Item_Description[Line]);
                 }
                 input.nextLine();
             }
@@ -93,9 +90,9 @@ public class BreakfastMenu
     // Write a method to display the menu
     private void PrintMenu()
     {
-        for (int i = 0; i < breakfast_Item_INFO_Combined.length; i++)
+        for (int i = 0; i < Drinks_Item_INFO_Combined.length; i++)
         {
-            System.out.println(breakfast_Item_INFO_Combined[i]);
+            System.out.println(Drinks_Item_INFO_Combined[i]);
         }
         System.out.println("Press 9 : To Return to Category Order Menu");
         System.out.println("Press 0 : To Exit");
@@ -107,9 +104,9 @@ public class BreakfastMenu
     //************************************ RECIPE  RELATED - START ************************************
     // These 3 var will increment based on the Users Order, then Send to the Receipt Class 
 
-    public static float Breakfast_TotalPrice = 0.0f;
-    public static int Breakfast_TotalQuantity = 0;
-    String[] Breakfast_Recipt_ItemsList = new String[10];
+    public static float Drinks_TotalPrice = 0.0f;
+    public static int Drinks_TotalQuantity = 0;
+    String[] Drinks_Recipt_ItemsList = new String[10];
 
 
     private String Receipt_Format(String ItemName, float ItemPrice, int ItemQuantity)
@@ -131,9 +128,9 @@ public class BreakfastMenu
        if(Items_in_Recipt_Counter == 0)
        {
         initalCounter = 0;
-           while(Breakfast_Recipt_ItemsList[initalCounter] != null)
+           while(Drinks_Recipt_ItemsList[initalCounter] != null)
            {
-               receipt.ReceiptTotalItems[initalCounter] = Breakfast_Recipt_ItemsList[initalCounter];
+               receipt.ReceiptTotalItems[initalCounter] = Drinks_Recipt_ItemsList[initalCounter];
                initalCounter++;
            }
        }
@@ -141,9 +138,9 @@ public class BreakfastMenu
        else
        {
             initalCounter = 0;
-            while(Breakfast_Recipt_ItemsList[initalCounter] != null)
+            while(Drinks_Recipt_ItemsList[initalCounter] != null)
             {
-                receipt.ReceiptTotalItems[Items_in_Recipt_Counter] = Breakfast_Recipt_ItemsList[initalCounter];
+                receipt.ReceiptTotalItems[Items_in_Recipt_Counter] = Drinks_Recipt_ItemsList[initalCounter];
                 Items_in_Recipt_Counter++;
                 initalCounter++;
             }
@@ -155,12 +152,12 @@ public class BreakfastMenu
 
 
     //************************************ SELECTION MENU - START ************************************
-    private void Breakfast_Menu_Selector()
+    private void Drinks_Menu_Selector()
     {        
         int ItemsSlected = 0;
-        Scanner breakfast_Reader = new Scanner (System.in);  // Reading from System.in
+        Scanner Drinks_Reader = new Scanner (System.in);  // Reading from System.in
         System.out.print("Please Enter The Digit that correspondence to what you want: ");
-        int b = breakfast_Reader.nextInt();
+        int b = Drinks_Reader.nextInt();
 
         while (b != 0)
         {
@@ -169,8 +166,8 @@ public class BreakfastMenu
             {
                 System.out.println("");
                 System.out.println("Returning to Category Order Menu");
-                receipt.ReceiptTotalPrice += Breakfast_TotalPrice;
-                receipt.ReceiptTotalQuantity += Breakfast_TotalQuantity;
+                receipt.ReceiptTotalPrice += Drinks_TotalPrice;
+                receipt.ReceiptTotalQuantity += Drinks_TotalQuantity;
                 Send_Items_To_Recipt();
                 main.CallCategoryMenu();
 
@@ -180,23 +177,23 @@ public class BreakfastMenu
             {
 
                 float selectedItem_Price = 0.0f;
-                System.out.println("You have selected " + breakfast_Item_Name[b-1]);
+                System.out.println("You have selected " + Drinks_Item_Name[b-1]);
         
                 // quantity of the item
                 System.out.print("Please Enter The Quantity: ");
-                int quantity = breakfast_Reader.nextInt();
+                int quantity = Drinks_Reader.nextInt();
 
                 System.out.println("");
-                System.out.println("You have selected " + quantity + " " + breakfast_Item_Name[b-1] + "(s)");
+                System.out.println("You have selected " + quantity + " " + Drinks_Item_Name[b-1] + "(s)");
                 
                 // Append Price To Class Total Price
-                selectedItem_Price = breakfast_Item_Price[b-1] * quantity;
-                Breakfast_TotalPrice += selectedItem_Price;
-                Breakfast_TotalQuantity += quantity;
+                selectedItem_Price = Drinks_Item_Price[b-1] * quantity;
+                Drinks_TotalPrice += selectedItem_Price;
+                Drinks_TotalQuantity += quantity;
                
                
                 // Add Items to Receipt Format
-                Breakfast_Recipt_ItemsList[ItemsSlected] = Receipt_Format(breakfast_Item_Name[b-1], breakfast_Item_Price[b-1], quantity);
+                Drinks_Recipt_ItemsList[ItemsSlected] = Receipt_Format(Drinks_Item_Name[b-1], Drinks_Item_Price[b-1], quantity);
                 ItemsSlected++;
 
                 System.out.println("");
@@ -207,7 +204,8 @@ public class BreakfastMenu
                 System.out.println("");
             }
             System.out.print("Please Enter The Digit that correspondence to what you want: ");
-            b = breakfast_Reader.nextInt();
+            
+            b = Drinks_Reader.nextInt();
         }
      
     }
